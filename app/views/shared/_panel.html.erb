@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <h3><%= link_to entry.title.html_safe, entry.url %></h3>
-    <i>asked on <%= entry.published %> ( <%= time_ago_in_words(entry.published) %> ago) by <%= link_to entry.author, entry.author_profile %></i>
+    <i>asked on <%= entry.published %> (<%= time_ago_in_words(entry.published) %> ago) by <%= link_to entry.author, entry.author_profile %></i>
   </div>
   <div class="panel-footer">
     <% feed = entry.feed %>
