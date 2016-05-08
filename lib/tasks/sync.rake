@@ -3,22 +3,22 @@ require 'httparty'
 namespace :sync do
   task feeds: [:environment] do
     philosophy_questions = grab_questions("artificial-intelligence","philosophy")
-    save_questions(philosophy_questions, Feed.where(name: "Philosophy"))
+    save_questions(philosophy_questions, Feed.where(name: "Philosophy")[0])
 
     world_building_questions = grab_questions("artificial-intelligence", "worldbuilding")
-    save_questions(world_building_questions, Feed.where(name: "Worldbuilding"))
+    save_questions(world_building_questions, Feed.where(name: "Worldbuilding")[0])
 
     computer_science_questions = grab_questions("artificial-intelligence","cs")
-    save_questions(computer_science_questions, Feed.where(name: "Computer Science"))
+    save_questions(computer_science_questions, Feed.where(name: "Computer Science")[0])
 
     theory_machine_learning_questions = grab_questions("machine-learning","stats")
-    save_questions(theory_machine_learning_questions, Feed.where(name: "Cross Validated"))
+    save_questions(theory_machine_learning_questions, Feed.where(name: "Cross Validated")[0])
 
     computional_linguistics_questions = grab_questions("computational-linguistics","linguistics")
-    save_questions(computional_linguistics_questions, Feed.where(name: "Computional Linguistics"))
+    save_questions(computional_linguistics_questions, Feed.where(name: "Computional Linguistics")[0])
 
     machine_learning_questions = grab_questions("machine-learning","datascience")
-    save_questions(machine_learning_questions, Feed.where(name: "Data Science"))
+    save_questions(machine_learning_questions, Feed.where(name: "Data Science")[0])
 
   end
 
