@@ -32,32 +32,33 @@ theoretical_machine_learning = Feed.create(name: "Cross Validated", url: "http:/
 # A spinoff dedicated towards 'applied' machine learning. Currently suffering from inactivity.
 applied_machine_learning = Feed.create(name: "Data Science", url: "http://datascience.stackexchange.com/feeds/tag/machine-learning", post_url: "http://datascience.stackexchange.com/questions/ask?tags=machine-learning", description: "Data Science SE focuses on applying machine learning algorithms to real-world situations.", category: machine_learning)
 
-# # Grab Site questions (currently banned because i'm hitting the API too much, will need to have error handling enabled)
-# def recursive_loop(array_of_questions, page, tag, site)
-#   page += 1
-#   new_json = HTTParty.get("https://api.stackexchange.com/2.2/questions?page=#{page}&order=desc&sort=activity&tagged=#{tag}&site=#{site}")
-#   new_array = array_of_questions + new_json["items"]
-#   if new_json["has_more"]
-#     recursive_loop(new_array, page, tag, site)
-#   else
-#     new_array
-#   end
-# end
-
-# This is a mock of the actual thing
+# # Grab Site questions
 def recursive_loop(array_of_questions, page, tag, site)
-  100.times do
-    entry = Hash.new
-    entry["owner"] = Hash.new
-    entry["title"] = "How do you #{Faker::Hacker.verb} the #{Faker::Hacker.adjective} #{Faker::Hacker.noun}?"
-    entry["owner"]["display_name"] = "#{Faker::App.author}"
-    entry["owner"]["link"] = "http://example.com"
-    entry["link"] = "http://example.com"
-    entry["creation_date"] = Time.at(rand * Time.now.to_i)
-    array_of_questions << entry
+  page += 1
+  new_json = HTTParty.get("https://api.stackexchange.com/2.2/questions?page=#{page}&order=desc&sort=activity&tagged=#{tag}&site=#{site}")
+  new_array = array_of_questions + new_json["items"]
+  if new_json["has_more"]
+    recursive_loop(new_array, page, tag, site)
+  else
+    new_array
   end
-  array_of_questions
 end
+
+# This is a mock of the actual thing, used in manual testing
+
+# def recursive_loop(array_of_questions, page, tag, site)
+#   100.times do
+#     entry = Hash.new
+#     entry["owner"] = Hash.new
+#     entry["title"] = "How do you #{Faker::Hacker.verb} the #{Faker::Hacker.adjective} #{Faker::Hacker.noun}?"
+#     entry["owner"]["display_name"] = "#{Faker::App.author}"
+#     entry["owner"]["link"] = "http://example.com"
+#     entry["link"] = "http://example.com"
+#     entry["creation_date"] = Time.at(rand * Time.now.to_i)
+#     array_of_questions << entry
+#   end
+#   array_of_questions
+# end
 
 def save_questions(array_of_questions, feed)
   array_of_questions.each do |entry|
