@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'httparty'
-require 'faker'
+# require 'faker'
 
 # AI Speculation
 speculation = Category.create(name: "AI Speculation", description: "This category deals with speculation about artifical intelligence. Philosophy SE uses logical reasoning to deduce facts about artifical intelligences, while Worldbuilding SE takes a science-fiction approach towards imaginging the possibilities inherent in AI.")
