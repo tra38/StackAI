@@ -1,9 +1,10 @@
 <div class="container">
-"AI is not a branch, it's a tree."--- <a href="http://discuss.area51.stackexchange.com/questions/22441/why-yet-another-trial-at-an-ai-project#comment36342_22539">Matthew Read, software developer</a>
+
+<a class="btn btn-default" data-toggle="modal" data-target="#information" role="button">About 'StackAI'</a>
 
 <a class="btn btn-info pull-right" data-toggle="modal" data-target="#questionSubmissionForm" role="button">Ask A Question</a>
 
-<h1>Listing Feeds</h1> (<%= link_to 'See All Questions', entries_path %>)
+<p><h1>Stack AI</h1> (<%= link_to 'See All Questions', entries_path %>)</p>
 
 <% @categories.each do |category| %>
   <h1><a href="<%= category_path(category.id) %>"><%= category.name %></a></h1>
@@ -36,3 +37,23 @@
 </div>
 
 <%= render partial: "shared/questionModal", :locals => { feeds: @feeds } %>
+
+<div class="modal fade" id="information" tabindex="-1" role="dialog" aria-labelledby="information">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">What is StackAI?</h4>
+      </div>
+      <div class="modal-body">
+        <p>StackAI is an aggregator of Stack Exchange questions that deals with the field of artifical intelligence. There has been several failed attempts on Stack Exchange to form a specific site to deal with AI issues. As it stands, knowledge about AI has been unevenly distributed on seven Stack Exchange sites, making it inconvenient for people wanting to study AI.</p>
+        <p>This particular website can serve as a good resource for people who want to have a broad understanding of AI: not just the technical aspects but also the philosophical and speculative aspects of the field.</p>
+        <p>We are currently aggregating from six Stack Exchange sites. Note that this site does not plan to aggregate Stack Overflow questions pertaining to AI at this time.</p>
+        <p>"AI is not a branch, it's a tree."--- <a href="http://discuss.area51.stackexchange.com/questions/22441/why-yet-another-trial-at-an-ai-project#comment36342_22539">Matthew Read, software developer</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
