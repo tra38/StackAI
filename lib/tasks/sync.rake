@@ -23,7 +23,7 @@ namespace :sync do
   end
 
   def grab_questions(tag, sitename)
-    HTTParty.get("https://api.stackexchange.com/2.2/questions?page=1&order=desc&sort=activity&tagged=#{tag}&site=#{site}")["items"]
+    HTTParty.get("https://api.stackexchange.com/2.2/questions?page=1&order=desc&sort=activity&tagged=#{tag}&site=#{sitename}")["items"]
   end
 
   def save_questions(entries, feed)
