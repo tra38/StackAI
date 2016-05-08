@@ -1,0 +1,38 @@
+<div class="container">
+"AI is not a branch, it's a tree."--- <a href="http://discuss.area51.stackexchange.com/questions/22441/why-yet-another-trial-at-an-ai-project#comment36342_22539">Matthew Read, software developer</a>
+
+<a class="btn btn-info pull-right" data-toggle="modal" data-target="#questionSubmissionForm" role="button">Ask A Question</a>
+
+<h1>Listing Feeds</h1> (<%= link_to 'See All Questions', entries_path %>)
+
+<% @categories.each do |category| %>
+  <h1><a href="<%= category_path(category.id) %>"><%= category.name %></a></h1>
+  <p><%= category.description %></p>
+  <% feeds = category.feeds %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% feeds.each do |feed| %>
+        <tr>
+          <td><%= feed.name %></td>
+          <td><%= feed.description %></td>
+          <td><%= link_to 'Show', feed %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>
+
+<br>
+
+</div>
+
+<%= render partial: "shared/questionModal", :locals => { feeds: @feeds } %>

@@ -1,0 +1,13 @@
+<div class="container">
+  <a class="btn btn-info pull-right" data-toggle="modal" data-target="#questionSubmissionForm" role="button">Ask A Question</a>
+  <%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+
+  <% @entries.each do |entry| %>
+    <%= render partial: "shared/panel", :locals => { entry: entry } %>
+  <% end %>
+
+  <%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+  <%= link_to 'Back', feeds_path %>
+</div>
+
+<%= render partial: "shared/questionModal", :locals => { feeds: @feeds } %>

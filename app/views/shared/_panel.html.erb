@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3><%= link_to entry.title.html_safe, entry.url %></h3>
+    <i>asked on <%= entry.published %> ( <%= time_ago_in_words(entry.published) %> ago) by <%= link_to entry.author, entry.author_profile %></i>
+  </div>
+  <div class="panel-footer">
+    <% feed = entry.feed %>
+    <% category = feed.category %>
+    Posted on <%= link_to feed.name, feed_path(feed.id) %> (category: <%= link_to feed.category.name, category_path(category.id) %>).
+  </div>
+</div>

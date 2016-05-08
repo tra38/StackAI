@@ -1,0 +1,14 @@
+<div class="container">
+  <h3><%= @feed.description %></h3>
+  <a href= '<%= @feed.post_url %>' class="btn btn-info pull-right" role="button">Ask A Question</a>
+  <hr />
+  <%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+    <% @entries.each do |entry| %>
+      <%= render partial: "shared/panel", :locals => { entry: entry } %>
+    <%end%>
+  </div>
+
+  <%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+
+  <%= link_to 'Back', feeds_path %>
+</div>

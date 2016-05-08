@@ -1,0 +1,16 @@
+<div class="container">
+  <h3><%= @category.name %> - <%= @category.description %></h3>
+  <a class="btn btn-info pull-right" role="button" data-toggle="modal" data-target="#questionSubmissionForm" role="button">Ask A Question</a>
+  <hr />
+  <%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+    <% @entries.each do |entry| %>
+      <%= render partial: "shared/panel", :locals => { entry: entry } %>
+    <%end%>
+  </div>
+
+  <%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+
+  <%= link_to 'Back', feeds_path %>
+</div>
+
+<%= render partial: "shared/questionModal", :locals => { feeds: @feeds } %>
